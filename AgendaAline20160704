@@ -1,0 +1,215 @@
+2- validar +-
+3-listar contatos ok
+3.1-listar em ordem alfabética
+4-pesquisar por nome 
+5-pesquisar por telefone
+6-menu(switch) ok
+TAREFINHA DE ALLAN
+PRA PODER PESQUISAR POR NOME E TEFELONE
+1-TEM QUE FAZER UMA FUNÇÃO PRA COMPARA STRINGS
+2- DEPOIS É SÓ PERCORRER O VETOR ATÉ ENCONTRAR O NOME OU TELEFONE QUE ESTÁ PROCURANDO
+*/
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#define TRUE 1
+
+//PROTÓTIPO DAS FUNÇÕES
+void cadastrar(); 
+void listar();
+int comparaString(char palavra1[], char palavra2[]);
+void carregarArquivo();
+
+int qtdContatos=0;
+
+
+//truct contatos
+typedef struct contato{
+	char primeiroNome[50];
+	char celular[20];
+	char telefoneResidencial[15];
+	char email[40];
+}contato; 
+
+contato contatos[100]; //vetor do tipo struct contato
+
+
+
+
+int main(void){
+
+	int opcao;
+//	FILE *f = fopen("agendaAline.txt", "a");
+//	if (f == NULL) {
+//		printf("O arquivo não pode ser aberto.\n"); return (EXIT_FAILURE);
+//	}
+//	
+
+	void carregarArquivo();
+
+
+
+	while (opcao!=6){
+
+		printf("\n\nAGENDA TELEFONICA\n\n");
+		printf("1 - Cadastrar\n");
+		printf("2 - pesquisar por nome\n");
+		printf("3 - pesquisar por telefone\n");
+		printf("4 - Listar\n");
+		printf("5 - Listar em ordem alfabética\n");
+		printf("6 - Sair\n");
+		
+		scanf("%d", &opcao);
+		
+		switch(opcao){
+		
+			case 1:
+				cadastrar();
+			break;
+			
+			case 2:
+				printf("Digite o nome do usuário, conforme cadastrado:");
+				
+				//pesquisar por nome
+			break;
+			
+			case 3:
+				//pesquisar por telefone
+			break;
+			
+			case 4:
+				listar();
+			break;
+			
+			case 5:
+				//listar em ordem alfabética
+			break;
+				
+			case 6:
+				return 0;
+				
+			default:
+				printf("Opcao invalida!");
+			}
+	//return 0; pq já tem return 0 no case4
+	}
+}
+
+/*Funcções a serem criadas para o projeto
+1 - Cadastrar : cadastra e salva num arquivo
+2 - Leitura : Listar e procurar um contato específico (pelo nome/ pelo número de telefone/pelo email)
+3 - Alterar 
+4 - Exclusão : Procurar, encontrar 
+*/
+
+//FUNÇÃO PRA CADASTRO DO USUÁRIO
+void cadastrar(){
+	
+	FILE *f = fopen("AgendaAline.txt", "a");
+
+	if (f == NULL) {
+			printf("O arquivo não pode ser aberto.\n"); return (EXIT_FAILURE);
+	}
+	
+	printf("Digite o primeiro nome:");
+	scanf("%49s", contatos[qtdContatos].primeiroNome);
+		
+	printf("Digite o número do celular:");
+	scanf("%19s", contatos[qtdContatos].celular);
+	
+	printf("Digite o telefone residencial:");
+	scanf("%14s", contatos[qtdContatos].telefoneResidencial);
+	
+	printf("Digite o e-mail:");
+	scanf("%39s", contatos[qtdContatos].email);
+	
+	fprintf(f, "%s %s %s %s\n", contatos[qtdContatos].primeiroNome, contatos[qtdContatos].celular, contatos[qtdContatos].telefoneResidencial, contatos[qtdContatos].email);
+	
+	qtdContatos++;
+
+}
+
+//FUNÇÃO PARA LISTAR USUÁRIOS
+void listar(){
+	int i;
+	
+	for(i = 0; i < qtdContatos ;i++){
+		printf("Nome: %s\n",contatos[i].primeiroNome);
+		printf("Celular: %s\n",contatos[i].celular);
+		printf("Telefone Fixo: %s\n",contatos[i].telefoneResidencial);
+		printf("E-mail: %s\n",contatos[i].email);
+	}
+	
+}
+
+void pesquisarNome(){
+	
+	
+		
+}
+
+//void pesquisarTelefone(){
+//}
+
+//FUNÇÃO PRA COMPARAR ESTRINGS
+int comparaString(char palavra1[], char palavra2[]){
+	
+int i;
+int tam1,tam2;
+
+
+	for(i=0; palavra1[i] != '\0'; i++){
+	}
+	tam1 = i; // se o tam estiver dentro do for 
+	
+	for(i=0; palavra2[i] != '\0'; i++){
+	}
+	tam2 = i;
+	
+	
+	if(tam1 == tam2){
+		
+		for(i= 0; i< tam1; i ++){
+			
+			if(palavra1[i] == palavra2[i]){
+			}
+			else if(palavra1[i] > palavra2[i]){
+				return 1;
+			}
+			else if(palavra1[i] < palavra2[i]){
+				return -1;
+			}
+			else
+		return 0;
+		}
+	} 
+	else if(tam1 > tam2){
+		return 1;
+	}
+	else if(tam1 < tam2){
+		return -1;
+	}
+}
+
+void carregarArquivo(){ //carregar arquivo no vetor em memória RAM
+	
+	FILE *f = fopen("AgendaAline.txt", "r");
+	int i = 0;
+	
+	while(fscanf(f,"%s %s %s %s",contatos[i].primeiroNome, contatos[i].celular,contatos[i].telefoneResidencial,contatos[i].email) != EOF)
+	{
+		printf("Nome: %s\n", contatos[i].primeiroNome);
+		
+	}
+	
+	printf("Nome: %s\n", contatos[i].primeiroNome);
+	printf("Arquivo lido com sucesso\n");
+	system("PAUSE");
+	system("cls");
+	
+	
+	
+	
+	
+}
