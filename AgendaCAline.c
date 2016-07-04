@@ -27,7 +27,7 @@ PRA PODER PESQUISAR POR NOME E TEFELONE
 //PROTÓTIPO DAS FUNÇÕES
 void cadastrar(); 
 void listar();
-int compararStrings(char stringA[], char stringB[]);
+int comparaString(char palavra1[], char palavra2[]);
 
 int qtdContatos=0;
 
@@ -124,7 +124,48 @@ void listar(){
 	
 }
 
-int compararStrings(char stringA[], char stringB[]){
+int comparaString(char palavra1[], char palavra2[]){
+	
+int i;
+int tam1,tam2;
+
+
+	for(i=0; palavra1[i] != '\0'; i++){
+	}
+	tam1 = i;
+	
+	for(i=0; palavra2[i] != '\0'; i++){
+	}
+	tam2 = i;
+	
+	
+	if(tam1 == tam2){
+		
+		for(i=0; palavra1[i] != '\0'; i++){
+			
+			if(palavra1[i] == palavra2[i]){
+			}
+			else if(palavra1[i] > palavra2[i]){
+				return 1;
+			}
+			else if(palavra1[i] < palavra2[i]){
+				return -1;
+			}
+			else
+		return 0;
+		}
+	} 
+	else if(tam1 > tam2){
+		return 1;
+	}
+	else if(tam1 < tam2){
+		return -1;
+	}
+	
+
+}
+
+
 	
 	
 	/*	
